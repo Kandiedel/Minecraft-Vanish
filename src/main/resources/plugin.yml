@@ -1,0 +1,5 @@
+name: Vanish
+version: '1.0-SNAPSHOT'
+main: de.kandiedel.vanish.Vanish
+api-version: '1.21'
+authors: [ Kandiedel ]
