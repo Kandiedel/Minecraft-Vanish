@@ -1,5 +1,19 @@
 name: Vanish
-version: '1.0-SNAPSHOT'
 main: de.kandiedel.vanish.Vanish
+version: '1.0-SNAPSHOT'
 api-version: '1.21'
 authors: [ Kandiedel ]
+
+commands:
+  vanish:
+    aliases: [v]
+    description: Set players to vanish
+
+permissions:
+  vanish.cmd.vanish:
+    description: Allows using /vanish
+    default: op
+
+  vanish.bypass.vanish:
+    description: Grants access to see players in vanish.
+    default: op

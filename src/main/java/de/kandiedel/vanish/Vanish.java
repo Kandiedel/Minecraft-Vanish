@@ -1,12 +1,26 @@
 package de.kandiedel.vanish;
 
+import de.kandiedel.vanish.commands.VanishCommand;
+import de.kandiedel.vanish.listeners.PlayerConnectionListener;
+import de.kandiedel.vanish.listeners.ServerPingListener;
+import de.kandiedel.vanish.utils.VanishManager;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Vanish extends JavaPlugin {
 
+    private VanishManager vanishManager;
+
     @Override
     public void onEnable() {
+
+        vanishManager = new VanishManager();
+
+        getCommand("vanish").setExecutor(new VanishCommand(vanishManager));
+
+        getServer().getPluginManager().registerEvents(new ServerPingListener(vanishManager), this);
+        getServer().getPluginManager().registerEvents(new PlayerConnectionListener(vanishManager), this);
+
         getServer().getConsoleSender().sendMessage("");
         getServer().getConsoleSender().sendMessage(ChatColor.GRAY + ChatColor.STRIKETHROUGH.toString() + "------------------------------------------");
         getServer().getConsoleSender().sendMessage("");
